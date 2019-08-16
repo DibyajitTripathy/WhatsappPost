@@ -1,28 +1,76 @@
 from selenium import webdriver
-import time
-
-driver = webdriver.Firefox()
-driver.get("https://web.whatsapp.com/")
 
 
-rcpt=input("Enter the name of the recepient")
-msg=input("Enter the message")
-no=int(input("Enter no of times"))
+print('\n WELCOME \n created by DIbyajitDj \n\n You can Send WhatsApp Messages from CMD' )
 
-input("Enter any thing after Scanning the code")
 
-sch=driver.find_element_by_class_name('_2zCfw')
-sch.send_keys(rcpt)
+def menu():
+	print("\n Enter Your Choice for operation in WhatsApp \n 1.Message Bomb \n 2.Normal Message")
+	choice=input()
 
-press=driver.find_element_by_class_name('_2UaNq')
-press.click()
+	if choice=="1":
+		driver = webdriver.Firefox()
+		driver.get("https://web.whatsapp.com/")
 
-elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
-elem.click()
+		input("Enter any thing after Scanning the code")
 
-box=driver.find_element_by_class_name('_3u328')
+		rcpt=input("Enter the name of the recepient")
+		msg=input("Enter the message")
+		no=int(input("Enter no of times"))
 
-for i in range(no):
-	box.send_keys(msg)
-	clik=driver.find_element_by_class_name('_3M-N-')
-	clik.click()
+		sch=driver.find_element_by_class_name('_2zCfw')
+		sch.send_keys(rcpt)
+
+		press=driver.find_element_by_class_name('_2UaNq')
+		press.click()
+
+		elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
+		elem.click()
+
+		box=driver.find_element_by_class_name('_3u328')
+
+		for i in range(no):
+			box.send_keys(msg)
+			clik=driver.find_element_by_class_name('_3M-N-')
+			clik.click()
+
+
+	else:
+
+		driver = webdriver.Firefox()
+		driver.get("https://web.whatsapp.com/")
+
+		input("Enter any thing after Scanning the code")
+
+		while True:
+
+			print("Choose \n 1.Keep Logged In \n 2.Leave")
+			choice = input()
+
+			if choice=="1":
+				
+				rcpt=input("Enter the name of the recepient")
+				msg=input("Enter the message")
+
+				sch=driver.find_element_by_class_name('_2zCfw')
+				sch.send_keys(rcpt)
+
+				press=driver.find_element_by_class_name('_2UaNq')
+				press.click()
+
+				elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
+				elem.click()
+
+				box=driver.find_element_by_class_name('_3u328')
+
+				box.send_keys(msg)
+				clik=driver.find_element_by_class_name('_3M-N-')
+				clik.click()
+
+			if(choice=="2"):
+				break
+
+		driver.quit()
+
+
+menu()

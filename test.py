@@ -1,78 +1,28 @@
 from selenium import webdriver
+import time
+
+driver = webdriver.Firefox()
+driver.get("https://web.whatsapp.com/")
 
 
-print('\n WELCOME \n created by DIbyajitDj \n\n You can Send WhatsApp Messages from CMD' )
+rcpt=input("Enter the name of the recepient")
+msg=input("Enter the message")
+no=int(input("Enter no of times"))
 
+input("Enter any thing after Scanning the code")
 
-def menu():
-	print("\n Enter Your Choice for operation in WhatsApp \n 1.Message Bomb \n 2.Normal Message")
-	choice=input()
+sch=driver.find_element_by_class_name('_2zCfw')
+sch.send_keys(rcpt)
 
-	if choice=="1":
-		driver = webdriver.Firefox()
-		driver.get("https://web.whatsapp.com/")
+press=driver.find_element_by_class_name('_2UaNq')
+press.click()
 
-		input("Enter any thing after Scanning the code")
+elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
+elem.click()
 
-		rcpt=input("Enter the name of the recepient")
-		msg=input("Enter the message")
-		no=int(input("Enter no of times"))
+box=driver.find_element_by_class_name('_3u328')
 
-		sch=driver.find_element_by_class_name('_2zCfw')
-		sch.send_keys(rcpt)
-
-		press=driver.find_element_by_class_name('_2UaNq')
-		press.click()
-
-		elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
-		elem.click()
-
-		box=driver.find_element_by_class_name('_3u328')
-
-		for i in range(no):
-			box.send_keys(msg)
-			clik=driver.find_element_by_class_name('_3M-N-')
-			clik.click()
-
-
-	else:
-
-		driver = webdriver.Firefox()
-		driver.get("https://web.whatsapp.com/")
-
-		input("Enter any thing after Scanning the code")
-
-		rcpt=input("Enter the name of the recepient")
-		msg=input("Enter the message")
-
-		sch=driver.find_element_by_class_name('_2zCfw')
-		sch.send_keys(rcpt)
-
-		press=driver.find_element_by_class_name('_2UaNq')
-		press.click()
-
-		elem = driver.find_element_by_xpath('//span[@title = "{}"]'.format(rcpt))
-		elem.click()
-
-		box=driver.find_element_by_class_name('_3u328')
-
-		box.send_keys(msg)
-		clik=driver.find_element_by_class_name('_3M-N-')
-		clik.click()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-menu()
-
-
+for i in range(no):
+	box.send_keys(msg)
+	clik=driver.find_element_by_class_name('_3M-N-')
+	clik.click()
